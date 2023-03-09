@@ -8,11 +8,13 @@ Belajar implementasi multiple upload file di laravel 9.
 
     git clone https://github.com/rizkywahyuprasetiyo/multi-upload-laravel.git
 
-2. Lalu install semua paket composer yang diperlukan
+2. Copy file .env.example dan ubah nama menjadi .env
+
+3. Lalu install semua paket composer yang diperlukan
 
     composer install
 
-3. Configurasi database (menyesuaikan dengan configurasi database yang antum gunakan, ane menggunakan configurasi seperti dibawah ini)
+4. Configurasi database (menyesuaikan dengan configurasi database yang antum gunakan, ane menggunakan configurasi seperti dibawah ini)
 
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
@@ -21,18 +23,18 @@ Belajar implementasi multiple upload file di laravel 9.
     DB_USERNAME=root
     DB_PASSWORD=password
 
-4. Buat storage link ke folder public
+5. Buat storage link ke folder public
 
     php artisan storage:link
 
-5. Configurasi FLYSYSTEM_DISK dari local menjadi public
+6. Configurasi FLYSYSTEM_DISK dari local menjadi public
 
     FILESYSTEM_DISK=public
 
-6. Generate enkripsi key Laravel
+7. Generate enkripsi key Laravel
 
     php artisan key:generate
 
-7. Jalankan server
+8. Jalankan server
 
     php artisan serve
