@@ -3,7 +3,7 @@
 
 @include('components.head')
 
-<body class="bg-primary overflow-x-hidden">
+<body class="overflow-x-hidden">
     @yield('content')
 
     @include('components.script')

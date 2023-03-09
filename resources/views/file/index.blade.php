@@ -11,8 +11,16 @@
         @endif
         <div class="card shadow px-3 py-4">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h3>Project.</h3>
-                <a href="{{ route('project.tambah') }}" class="btn btn-primary">Tambah</a>
+                <h3>File.</h3>
+                <form action="{{ route('file.simpan', $project->id) }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" class="form-control" name="file[]" multiple id="file" onchange="this.form.submit()">
+                    @error('file')
+                    <div class=" text-danger mt-1">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </form>
             </div>
             <table class="table">
                 <thead>
@@ -24,21 +32,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($dataProject as $index => $project)
+                    @forelse($dataFile as $index => $dataFile)
                     <tr>
                         <td>{{ ++$index }}</td>
-                        <td>{{ $project->nama }}</td>
-                        <td>{{ $project->lokasi }}</td>
+                        <td><a href="#" class="btn-link">{{ $dataFile->nama_file }}</a></td>
                         <td>
-                            <div class="d-flex justify-content-center align-items-center gap-1">
-                                <a href="{{ route('file.index', $project->id) }}" class="btn btn-sm btn-info">File</a>
-                                <a href="{{ route('project.edit', $project->id) }}" class="btn btn-sm btn-success">Edit</a>
-                                <form action="{{ route('project.hapus', $project->id) }}" method="post" onsubmit="return confirm(' Data akan dihapus, lanjutkan?')">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                                </form>
-                            </div>
+                            <form action="#" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\{ProjectController, FileController};
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,4 +14,9 @@ Route::controller(ProjectController::class)->name('project.')->group(function ()
     Route::get('project/{project}/edit', 'edit')->name('edit');
     Route::patch('project/{project}/update', 'update')->name('update');
     Route::delete('project/{project}/hapus', 'hapus')->name('hapus');
+});
+
+Route::controller(FileController::class)->name('file.')->group(function () {
+    Route::get('project/{project}/file', 'index')->name('index');
+    Route::post('project/{project}/file/simpan', 'simpan')->name('simpan');
 });

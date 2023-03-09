@@ -16,4 +16,9 @@ class Project extends Model
         'nama',
         'lokasi'
     ];
+
+    public function file()
+    {
+        return $this->hasMany(File::class, 'project_id')->orderBy('nama_file', 'asc');
+    }
 }
