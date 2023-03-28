@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FileRequest extends FormRequest
+class UbahNamaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class FileRequest extends FormRequest
     public function rules()
     {
         return [
-            'file' => ['required'],
-            'file.*' => ['file', 'mimes:pdf,jpg,jpeg,png,doc,docx,xls,xlsx']
+            'nama_file' => 'required|string|max:191'
         ];
     }
 }

@@ -25,23 +25,27 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Nama Project</th>
-                        <th scope="col">Lokasi</th>
+                        <th scope="col">Nama File</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($dataFile as $index => $dataFile)
+                    @forelse($dataFile as $dataFile)
                     <tr>
-                        <td>{{ ++$index }}</td>
-                        <td><a href="#" class="btn-link">{{ $dataFile->nama_file }}</a></td>
+                        <td><a href="{{ Storage::url($dataFile->path) }}" class="btn-link" target="_blank">{{ $dataFile->nama_file }}</a></td>
                         <td>
-                            <form action="#" method="post">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                            </form>
+                            <div class="d-flex gap-1">
+                                <div>
+                                    <a href="{{ route('file.edit', [$project->id, $dataFile->id]) }}" class="btn btn-sm btn-success">Edit</a>
+                                </div>
+                                <div>
+                                    <form action="#" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                    </form>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     @endforeach

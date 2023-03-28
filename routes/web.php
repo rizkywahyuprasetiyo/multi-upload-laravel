@@ -19,4 +19,7 @@ Route::controller(ProjectController::class)->name('project.')->group(function ()
 Route::controller(FileController::class)->name('file.')->group(function () {
     Route::get('project/{project}/file', 'index')->name('index');
     Route::post('project/{project}/file/simpan', 'simpan')->name('simpan');
+    Route::get('project/{project}/file/{file}/edit', 'edit')->name('edit');
+    Route::patch('project/{project}/file/{file}/update', 'update')->name('update');
+    // Route::delete('project')
 });
