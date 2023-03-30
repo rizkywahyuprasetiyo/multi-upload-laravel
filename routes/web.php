@@ -21,5 +21,5 @@ Route::controller(FileController::class)->name('file.')->group(function () {
     Route::post('project/{project}/file/simpan', 'simpan')->name('simpan');
     Route::get('project/{project}/file/{file}/edit', 'edit')->name('edit');
     Route::patch('project/{project}/file/{file}/update', 'update')->name('update');
-    // Route::delete('project')
+    Route::delete('project/file/{file}/hapus', 'hapus')->name('hapus');
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\{File, Project};
 use App\Http\Requests\FileRequest;
 use App\Http\Requests\UbahNamaRequest;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
@@ -45,5 +46,13 @@ class FileController extends Controller
         $file->update($data);
 
         return to_route('file.index', $project->id)->with('berhasil', 'Nama file berhasil diubah');
+    }
+
+    public function hapus(File $file)
+    {
+        Storage::delete($file->path);
+        $file->delete();
+
+        return back()->with('berhasil', 'File berhasil dihapus.');
     }
 }

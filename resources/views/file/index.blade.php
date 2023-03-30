@@ -30,16 +30,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($dataFile as $dataFile)
+                    @forelse($dataFile as $file)
                     <tr>
-                        <td><a href="{{ Storage::url($dataFile->path) }}" class="btn-link" target="_blank">{{ $dataFile->nama_file }}</a></td>
+                        <td><a href="{{ Storage::url($file->path) }}" class="btn-link" target="_blank">{{ $file->nama_file }}</a></td>
                         <td>
                             <div class="d-flex gap-1">
                                 <div>
-                                    <a href="{{ route('file.edit', [$project->id, $dataFile->id]) }}" class="btn btn-sm btn-success">Edit</a>
+                                    <a href="{{ route('file.edit', [$project->id, $file->id]) }}" class="btn btn-sm btn-success">Edit</a>
                                 </div>
                                 <div>
-                                    <form action="#" method="post">
+                                    <form action="{{ route('file.hapus', $file->id) }}" onsubmit="return confirm('Apakah Anda yakin ingin menghapus?')" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
